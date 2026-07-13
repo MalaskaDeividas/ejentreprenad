@@ -14,3 +14,5 @@ kontakt page: Hemsida\apps\web\src\pages\KontaktPage.jsx
 ## Run
 
 in home run npm install then npm run dev
+
+also
