@@ -44,8 +44,8 @@ function OmOssPage() {
   return (
     <>
       <Helmet>
-        <title>Om oss - Entreprerad & Schakt AB</title>
-        <meta name="description" content="Lär känna Entreprerad & Schakt AB. Med över 20 års erfarenhet är vi din pålitliga partner för schaktning och jordarbete." />
+        <title>Om oss - Schackt & Entreprenad Sverige AB</title>
+        <meta name="description" content="Lär känna Schackt & Entreprenad Sverige AB. Med över 20 års erfarenhet är vi din pålitliga partner för schaktning och jordarbete." />
       </Helmet>
 
       <div className="min-h-screen flex flex-col">
@@ -61,7 +61,7 @@ function OmOssPage() {
                 className="text-center mb-16"
               >
                 <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6">
-                  Om <span className="text-primary">Entreprerad & Schakt AB</span>
+                  Om <span className="text-primary">Schackt & Entreprenad Sverige AB</span>
                 </h1>
                 <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
                   Din pålitliga partner för professionell schaktning och jordarbete.
@@ -77,7 +77,7 @@ function OmOssPage() {
                 <h2 className="text-2xl md:text-3xl font-bold mb-6">Om oss</h2>
                 <div className="space-y-4 text-muted-foreground leading-relaxed">
                   <p>
-                    Entreprerad & Schakt AB jobbar med en vision om att erbjuda högkvalitativa schakt- och jordarbeten till både privata och kommersiella kunder. Vår vision bygger på att leverera pålitlighet, kvalitet och professionalism till alla våra kunder.
+                    Schackt & Entreprenad Sverige AB jobbar med en vision om att erbjuda högkvalitativa schakt- och jordarbeten till både privata och kommersiella kunder. Vår vision bygger på att leverera pålitlighet, kvalitet och professionalism till alla våra kunder.
                   </p>
                   <p>
                     Vi är stolta över att kunna erbjuda kompletta lösningar från planering till färdigställande.

@@ -24,7 +24,7 @@ function HomePage() {
   return (
     <>
       <Helmet>
-        <title>Entreprerad & Schakt AB - Professionell schaktning och jordarbete</title>
+        <title>Schackt & Entreprenad Sverige AB - Professionell schaktning och jordarbete</title>
         <meta name="description" content="Din pålitlig partner för professionell schaktning och jordarbete. Kontakta oss för en kostnadsfri offert." />
       </Helmet>
 

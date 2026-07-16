@@ -41,7 +41,7 @@ function KontaktPage() {
       },
       body: JSON.stringify({
         access_key: import.meta.env.VITE_WEB3FORMS_ACCESS_KEY,
-        subject: 'Nytt meddelande från Entreprerad & Schakt AB',
+        subject: 'Nytt meddelande från Schackt & Entreprenad Sverige AB',
         from_name: formData.name,
         name: formData.name,
         email: formData.email,
