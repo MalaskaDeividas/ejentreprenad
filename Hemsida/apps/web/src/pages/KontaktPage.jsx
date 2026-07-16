@@ -81,8 +81,8 @@ function KontaktPage() {
     {
       icon: Mail,
       title: 'E-post',
-      content: 'info@ejentreprerad.se',
-      link: 'mailto:info@ejentreprerad.se'
+      content: 'info@ejentreprenad.se',
+      link: 'mailto:info@ejentreprenad.se'
     },
     {
       icon: MapPin,
