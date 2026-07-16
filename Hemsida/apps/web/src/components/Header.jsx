@@ -22,8 +22,8 @@ function Header() {
         <div className="flex items-center justify-between h-20">
           <Link to="/" className="flex items-center">
             <img 
-              src="https://horizons-cdn.hostinger.com/08845edc-3759-4203-a1a9-b7b4faf1b8e1/501c08b3d7f2b63ec6f38249c714fd9b.png" 
-              alt="Entreprerad & Schakt AB"
+              src="/images/1000035905.png" 
+              alt="Schackt & Entreprenad Sverige AB"
               className="h-12 w-auto"
             />
           </Link>

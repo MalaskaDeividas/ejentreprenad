@@ -6,7 +6,7 @@ function Footer() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
           <div>
-            <img src="https://horizons-cdn.hostinger.com/08845edc-3759-4203-a1a9-b7b4faf1b8e1/501c08b3d7f2b63ec6f38249c714fd9b.png" alt="Entreprerad & Schakt AB" className="h-10 w-auto mb-4" />
+            <img src="/images/1000035905.png" alt="Schackt & Entreprenad Sverige AB" className="h-10 w-auto mb-4" />
             <p className="text-sm text-muted-foreground leading-relaxed">
               Din pålitliga partner för professionell schaktning och jordarbete i hela regionen.
             </p>

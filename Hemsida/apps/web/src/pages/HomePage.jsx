@@ -43,7 +43,7 @@ function HomePage() {
                 className="mb-8"
               >
                 <img 
-                  src="https://horizons-cdn.hostinger.com/08845edc-3759-4203-a1a9-b7b4faf1b8e1/9e56c6dbd94a0ff9a937ffd1d461333b.png" 
+                  src="/images/1000035905.png" 
                   alt="Schackt & Entreprenad Sverige AB"
                   className="w-full max-w-[320px] h-auto mx-auto"
                 />
