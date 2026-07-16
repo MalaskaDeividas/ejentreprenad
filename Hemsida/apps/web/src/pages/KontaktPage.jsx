@@ -81,8 +81,8 @@ function KontaktPage() {
     {
       icon: Mail,
       title: 'E-post',
-      content: 'info@entreprerad-schakt.se',
-      link: 'mailto:info@entreprerad-schakt.se'
+      content: 'info@ejentreprerad.se',
+      link: 'mailto:info@ejentreprerad.se'
     },
     {
       icon: MapPin,
@@ -101,7 +101,7 @@ function KontaktPage() {
   return (
     <>
       <Helmet>
-        <title>Kontakt - Entreprerad & Schakt AB</title>
+        <title>Kontakt - Shack & Entreprenad Sverige AB</title>
         <meta name="description" content="Kontakta Entreprerad & Schakt AB för en kostnadsfri offert. Vi finns här för att hjälpa dig med ditt projekt." />
       </Helmet>
 
