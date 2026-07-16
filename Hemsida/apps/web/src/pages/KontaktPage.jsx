@@ -101,8 +101,8 @@ function KontaktPage() {
   return (
     <>
       <Helmet>
-        <title>Kontakt - Shack & Entreprenad Sverige AB</title>
-        <meta name="description" content="Kontakta Shack & Entreprenad Sverige AB för en kostnadsfri offert. Vi finns här för att hjälpa dig med ditt projekt." />
+        <title>Kontakt - Schackt & Entreprenad Sverige AB</title>
+        <meta name="description" content="Kontakta Schackt & Entreprenad Sverige AB för en kostnadsfri offert. Vi finns här för att hjälpa dig med ditt projekt." />
       </Helmet>
 
       <div className="min-h-screen flex flex-col">
