@@ -36,7 +36,7 @@ function Footer() {
               </div>
               <div className="flex items-start gap-3">
                 <Mail size={18} className="text-primary mt-0.5 flex-shrink-0" />
-                <span className="text-sm">info@ej.entreprerad.se</span>
+                <span className="text-sm">malaskiene-e@gmail.com</span>
               </div>
               <div className="flex items-start gap-3">
                 <MapPin size={18} className="text-primary mt-0.5 flex-shrink-0" />
