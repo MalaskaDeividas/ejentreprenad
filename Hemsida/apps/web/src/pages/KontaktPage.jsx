@@ -81,8 +81,8 @@ function KontaktPage() {
     {
       icon: Mail,
       title: 'E-post',
-      content: 'info@ejentreprenad.se',
-      link: 'mailto:info@ejentreprenad.se'
+      content: 'malaskiene-e@gmail.com',
+      link: 'mailto:malaskiene-e@gmail.com'
     },
     {
       icon: MapPin,
