@@ -81,8 +81,8 @@ function KontaktPage() {
     {
       icon: Mail,
       title: 'E-post',
-      content: 'malaskiene-e@gmail.com',
-      link: 'mailto:malaskiene-e@gmail.com'
+      content: 'malaskiene-e@hotmail.com',
+      link: 'mailto:malaskiene-e@hotmail.com'
     },
     {
       icon: MapPin,
