@@ -1,144 +1,116 @@
-
 import React from 'react';
 import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
-import { ArrowRight, Hammer, Truck } from 'lucide-react';
+import { Phone } from 'lucide-react';
 import Header from '@/components/Header.jsx';
 import Footer from '@/components/Footer.jsx';
+import { company, services } from '@/lib/company.js';
 
 function HomePage() {
-  const features = [
-    {
-      icon: Hammer,
-      title: 'Professionell schaktning',
-      description: 'Vi utför alla typer av schaktarbeten med modern utrustning och erfaren personal.'
-    },
-    {
-      icon: Truck,
-      title: 'Jordarbete & transport',
-      description: 'Kompletta lösningar för jordarbete, massor och transport till och från arbetsplatsen.'
-    }
-  ];
-
   return (
     <>
       <Helmet>
-        <title>Schackt & Entreprenad Sverige AB - Professionell schaktning och jordarbete</title>
-        <meta name="description" content="Din pålitlig partner för professionell schaktning och jordarbete. Kontakta oss för en kostnadsfri offert." />
+        <title>{`${company.shortName} – Schakt och markarbeten i Västerås`}</title>
+        <meta
+          name="description"
+          content="Schakt, dränering och markarbeten för privatpersoner och företag. Ring 070-542 20 31 eller begär en kostnadsfri offert."
+        />
       </Helmet>
 
       <div className="min-h-screen flex flex-col">
         <Header />
 
         <main className="flex-1">
-          <section className="relative min-h-[90vh] flex items-center justify-center bg-gradient-to-b from-background via-background to-card">
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,hsl(var(--primary)/0.1),transparent_50%)]" />
-            
-            <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center">
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6 }}
-                className="mb-8"
-              >
-                <img 
-                  src="/images/1000035905.png" 
-                  alt="Schackt & Entreprenad Sverige AB"
-                  className="w-full max-w-[320px] h-auto mx-auto"
+          {/* Hero */}
+          <section className="border-b border-border">
+            <div className="max-w-6xl mx-auto px-4 sm:px-6 py-14 md:py-24 grid gap-10 md:grid-cols-[1.1fr_1fr] md:items-center">
+              <div className="md:order-2">
+                <img
+                  src="/images/logo-full.png"
+                  alt={company.name}
+                  width="900"
+                  height="625"
+                  className="w-full max-w-[300px] md:max-w-[460px] mx-auto md:mr-0"
                 />
-              </motion.div>
+              </div>
 
-              <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                className="text-lg md:text-xl text-muted-foreground mb-12 max-w-3xl mx-auto leading-relaxed"
-              >
-                Vi levererar högkvalitativa schakt, jordarbeten och dränering för både privata och kommersiella projekt. Vi tar hand om allt från planering till färdigställande.
-              </motion.p>
-
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: 0.3 }}
-              >
-                <Link
-                  to="/kontakt"
-                  className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-8 py-4 rounded-lg font-bold text-lg uppercase tracking-wide hover:brightness-110 transition-all duration-200 active:scale-[0.98] industrial-shadow"
-                >
-                  Kontakta oss
-                  <ArrowRight size={20} />
-                </Link>
-              </motion.div>
-            </div>
-          </section>
-
-          <section className="py-24 bg-card">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6 }}
-                className="text-center mb-16"
-              >
-                <h2 className="text-3xl md:text-4xl font-bold mb-4">
-                  Våra <span className="text-primary">tjänster</span>
-                </h2>
-                <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-                  Vi erbjuder kompletta lösningar för alla typer av schakt- och jordarbeten
+              <div className="md:order-1">
+                <p className="font-display uppercase tracking-[0.2em] text-sm text-primary mb-4">
+                  Västerås med omnejd
                 </p>
-              </motion.div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-                {features.map((feature, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.5, delay: index * 0.1 }}
-                    className="flex gap-6 items-start"
+                <h1 className="font-display uppercase text-5xl sm:text-6xl lg:text-7xl leading-[0.95] mb-6">
+                  Schakt, dränering<br />och markarbeten
+                </h1>
+                <p className="text-lg text-muted-foreground mb-8">
+                  Vi gräver för husgrunder, drar ledningar, dränerar och planerar mark – för både
+                  privatpersoner och företag. Vi tar hand om jobbet från planering till färdig yta.
+                </p>
+                <div className="flex flex-wrap gap-3">
+                  <a
+                    href={company.phoneHref}
+                    className="inline-flex items-center gap-2 bg-primary text-primary-foreground font-display text-xl font-semibold px-6 py-3 rounded-sm hover:bg-primary/90 transition-colors"
                   >
-                    <div className="flex-shrink-0 w-16 h-16 bg-primary/10 rounded-lg flex items-center justify-center">
-                      <feature.icon size={32} className="text-primary" />
-                    </div>
-                    <div>
-                      <h3 className="text-xl font-bold mb-3">{feature.title}</h3>
-                      <p className="text-muted-foreground leading-relaxed">
-                        {feature.description}
-                      </p>
-                    </div>
-                  </motion.div>
-                ))}
+                    <Phone size={18} strokeWidth={2.5} />
+                    {company.phone}
+                  </a>
+                  <Link
+                    to="/kontakt"
+                    className="inline-flex items-center font-display text-xl px-6 py-3 rounded-sm border border-foreground/30 hover:border-primary hover:text-primary transition-colors"
+                  >
+                    Begär offert
+                  </Link>
+                </div>
               </div>
             </div>
           </section>
 
-          <section className="py-24 bg-background">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              <div className="bg-gradient-to-r from-primary/10 to-primary/5 rounded-2xl p-12 md:p-16 text-center border-2 border-primary/20">
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6 }}
-                >
-                  <h2 className="text-3xl md:text-4xl font-bold mb-6">
-                    Redo att starta ditt projekt?
-                  </h2>
-                  <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
-                    Kontakta oss idag för en kostnadsfri konsultation och offert. Vi hjälper dig från start till mål.
-                  </p>
-                  <Link
-                    to="/kontakt"
-                    className="inline-flex items-center gap-2 bg-primary text-primary-foreground px-8 py-4 rounded-lg font-bold text-lg uppercase tracking-wide hover:brightness-110 transition-all duration-200 active:scale-[0.98] industrial-shadow"
+          {/* Services */}
+          <section className="max-w-6xl mx-auto px-4 sm:px-6 py-16 md:py-24">
+            <div className="grid gap-10 md:grid-cols-[1fr_2fr]">
+              <div>
+                <h2 className="font-display uppercase text-4xl md:text-5xl leading-none mb-4">Det här gör vi</h2>
+                <p className="text-muted-foreground">
+                  Stora som små jobb. Hör av dig så går vi igenom ditt projekt och tar fram en offert.
+                </p>
+              </div>
+
+              <ol className="grid sm:grid-cols-2 border-t border-border">
+                {services.map((service, i) => (
+                  <li
+                    key={service}
+                    className="flex gap-4 items-baseline py-4 border-b border-border sm:odd:pr-6 sm:even:pl-6 sm:even:border-l"
                   >
-                    Begär offert
-                    <ArrowRight size={20} />
-                  </Link>
-                </motion.div>
+                    <span className="font-display text-primary text-lg tabular-nums w-6 shrink-0">
+                      {String(i + 1).padStart(2, '0')}
+                    </span>
+                    <span className="text-base">{service}</span>
+                  </li>
+                ))}
+              </ol>
+            </div>
+          </section>
+
+          {/* Call band */}
+          <section className="bg-primary text-primary-foreground">
+            <div className="max-w-6xl mx-auto px-4 sm:px-6 py-10 flex flex-col md:flex-row md:items-center md:justify-between gap-6">
+              <div>
+                <h2 className="font-display uppercase text-3xl md:text-4xl leading-none mb-2">Har du ett projekt på gång?</h2>
+                <p className="text-primary-foreground/80">Offerten är kostnadsfri. Ring eller skicka ett meddelande.</p>
+              </div>
+              <div className="flex flex-wrap gap-3">
+                <a
+                  href={company.phoneHref}
+                  className="inline-flex items-center gap-2 bg-black text-white font-display text-xl px-6 py-3 rounded-sm hover:bg-black/85 transition-colors"
+                >
+                  <Phone size={18} />
+                  {company.phone}
+                </a>
+                <Link
+                  to="/kontakt"
+                  className="inline-flex items-center font-display text-xl px-6 py-3 rounded-sm border-2 border-black hover:bg-black hover:text-white transition-colors"
+                >
+                  Skriv till oss
+                </Link>
               </div>
             </div>
           </section>

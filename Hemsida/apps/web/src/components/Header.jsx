@@ -1,94 +1,72 @@
-
 import React, { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import { Menu, X } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { Link, NavLink } from 'react-router-dom';
+import { Menu, X, Phone } from 'lucide-react';
+import { company } from '@/lib/company.js';
+
+const navLinks = [
+  { path: '/', label: 'Hem' },
+  { path: '/om-oss', label: 'Om oss' },
+  { path: '/kontakt', label: 'Kontakt' },
+];
 
 function Header() {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const location = useLocation();
+  const [open, setOpen] = useState(false);
 
-  const navLinks = [
-    { path: '/', label: 'Hem' },
-    { path: '/om-oss', label: 'Om oss' },
-    { path: '/kontakt', label: 'Kontakt' }
-  ];
-
-  const isActive = (path) => location.pathname === path;
+  const linkClass = ({ isActive }) =>
+    `font-display text-lg uppercase tracking-wide transition-colors ${
+      isActive ? 'text-primary' : 'text-foreground/80 hover:text-foreground'
+    }`;
 
   return (
-    <header className="bg-background border-b border-border sticky top-0 z-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
-          <Link to="/" className="flex items-center">
-            <img 
-              src="/images/1000035905.png" 
-              alt="Schackt & Entreprenad Sverige AB"
-              className="h-12 w-auto"
-            />
-          </Link>
+    <header className="sticky top-0 z-50 bg-background/95 backdrop-blur border-b border-border">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 flex items-center justify-between h-20">
+        <Link to="/" className="shrink-0" aria-label={`${company.name} – startsida`}>
+          <img
+            src="/images/logo-mark.png"
+            alt={company.name}
+            width="600"
+            height="302"
+            className="h-14 w-auto"
+          />
+        </Link>
 
-          <nav className="hidden md:flex items-center gap-8">
-            {navLinks.map((link) => (
-              <Link
-                key={link.path}
-                to={link.path}
-                className={`text-base font-semibold transition-all duration-200 relative ${
-                  isActive(link.path)
-                    ? 'text-primary'
-                    : 'text-foreground hover:text-primary'
-                }`}
-              >
-                {link.label}
-                {isActive(link.path) && (
-                  <motion.div
-                    layoutId="activeNav"
-                    className="absolute -bottom-1 left-0 right-0 h-0.5 bg-primary"
-                    transition={{ type: 'spring', stiffness: 380, damping: 30 }}
-                  />
-                )}
-              </Link>
-            ))}
-          </nav>
-
-          <button
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden text-foreground hover:text-primary transition-colors duration-200"
-            aria-label="Toggle menu"
+        <nav className="hidden md:flex items-center gap-8">
+          {navLinks.map((link) => (
+            <NavLink key={link.path} to={link.path} end className={linkClass}>
+              {link.label}
+            </NavLink>
+          ))}
+          <a
+            href={company.phoneHref}
+            className="flex items-center gap-2 bg-primary text-primary-foreground font-display text-lg font-semibold px-4 py-2 rounded-sm hover:bg-primary/90 transition-colors"
           >
-            {mobileMenuOpen ? <X size={28} /> : <Menu size={28} />}
-          </button>
-        </div>
+            <Phone size={16} strokeWidth={2.5} />
+            {company.phone}
+          </a>
+        </nav>
+
+        <button
+          onClick={() => setOpen(!open)}
+          className="md:hidden p-2 -mr-2 text-foreground"
+          aria-label={open ? 'Stäng meny' : 'Öppna meny'}
+          aria-expanded={open}
+        >
+          {open ? <X size={26} /> : <Menu size={26} />}
+        </button>
       </div>
 
-      <AnimatePresence>
-        {mobileMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3 }}
-            className="md:hidden bg-card border-t border-border overflow-hidden"
-          >
-            <nav className="px-4 py-6 space-y-4">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.path}
-                  to={link.path}
-                  onClick={() => setMobileMenuOpen(false)}
-                  className={`block text-lg font-semibold transition-colors duration-200 ${
-                    isActive(link.path)
-                      ? 'text-primary'
-                      : 'text-foreground hover:text-primary'
-                  }`}
-                >
-                  {link.label}
-                </Link>
-              ))}
-            </nav>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      {open && (
+        <nav className="md:hidden border-t border-border bg-background px-4 py-4 flex flex-col gap-4">
+          {navLinks.map((link) => (
+            <NavLink key={link.path} to={link.path} end className={linkClass} onClick={() => setOpen(false)}>
+              {link.label}
+            </NavLink>
+          ))}
+          <a href={company.phoneHref} className="font-display text-lg text-primary flex items-center gap-2">
+            <Phone size={16} /> {company.phone}
+          </a>
+        </nav>
+      )}
     </header>
   );
 }

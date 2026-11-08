@@ -1,8 +1,6 @@
 
 import React, { useState } from 'react';
 import { Helmet } from 'react-helmet';
-import { motion } from 'framer-motion';
-import { Phone, Mail, MapPin, Clock } from 'lucide-react';
 import { toast } from 'sonner';
 import Header from '@/components/Header.jsx';
 import Footer from '@/components/Footer.jsx';
@@ -10,6 +8,7 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
+import { company } from '@/lib/company.js';
 
 function KontaktPage() {
   const [formData, setFormData] = useState({
@@ -41,7 +40,7 @@ function KontaktPage() {
       },
       body: JSON.stringify({
         access_key: import.meta.env.VITE_WEB3FORMS_ACCESS_KEY,
-        subject: 'Nytt meddelande från Schackt & Entreprenad Sverige AB',
+        subject: 'Nytt meddelande från hemsidan (E&J Schakt & Entreprenad)',
         from_name: formData.name,
         name: formData.name,
         email: formData.email,
@@ -71,190 +70,90 @@ function KontaktPage() {
   }
 };
 
-  const contactInfo = [
-    {
-      icon: Phone,
-      title: 'Telefon',
-      content: '+46 70-542 20 31',
-      link: 'tel:+46705422031'
-    },
-    {
-      icon: Mail,
-      title: 'E-post',
-      content: 'malaskiene-e@hotmail.com',
-      link: 'mailto:malaskiene-e@hotmail.com'
-    },
-    {
-      icon: MapPin,
-      title: 'Adress',
-      content: 'Knotavägen 16, 723 52 Västerås',
-      link: 'https://maps.google.com'
-    },
-    {
-      icon: Clock,
-      title: 'Öppettider',
-      content: 'Mån-Fre: 07:00-17:00',
-      link: null
-    }
-  ];
+  const fieldClass = 'bg-transparent border-border rounded-sm h-12 text-base focus-visible:ring-primary';
 
   return (
     <>
       <Helmet>
-        <title>Kontakt - Schackt & Entreprenad Sverige AB</title>
-        <meta name="description" content="Kontakta Schackt & Entreprenad Sverige AB för en kostnadsfri offert. Vi finns här för att hjälpa dig med ditt projekt." />
+        <title>{`Kontakt – ${company.shortName}`}</title>
+        <meta name="description" content="Kontakta E&J Schakt & Entreprenad Sverige AB för en kostnadsfri offert. Ring 070-542 20 31 eller skicka ett meddelande." />
       </Helmet>
 
       <div className="min-h-screen flex flex-col">
         <Header />
 
         <main className="flex-1">
-          <section className="py-20 bg-gradient-to-b from-background to-card">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6 }}
-                className="text-center mb-16"
-              >
-                <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-6">
-                  Kontakta <span className="text-primary">oss</span>
-                </h1>
-                <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-                  Vi finns här för att hjälpa dig. Fyll i formuläret eller kontakta oss direkt.
-                </p>
-              </motion.div>
+          <section className="max-w-6xl mx-auto px-4 sm:px-6 py-14 md:py-20 grid gap-14 md:grid-cols-[1fr_1.3fr] md:gap-20">
+            <div>
+              <p className="font-display uppercase tracking-[0.2em] text-sm text-primary mb-4">Kontakt</p>
+              <h1 className="font-display uppercase text-5xl md:text-6xl leading-[0.95] mb-6">Berätta om ditt projekt</h1>
+              <p className="text-lg text-muted-foreground mb-10">
+                Offerten är kostnadsfri och vi svarar normalt inom 24 timmar. Snabbast når du oss på telefon.
+              </p>
 
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-                <motion.div
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.6, delay: 0.2 }}
-                >
-                  <div className="bg-card rounded-2xl p-8 border border-border">
-                    <h2 className="text-2xl font-bold mb-6">Skicka ett meddelande</h2>
-                    <form onSubmit={handleSubmit} className="space-y-6">
-                      <div>
-                        <Label htmlFor="name" className="text-sm font-semibold mb-2 block">
-                          Namn *
-                        </Label>
-                        <Input
-                          id="name"
-                          name="name"
-                          type="text"
-                          required
-                          value={formData.name}
-                          onChange={handleChange}
-                          className="bg-input border-border text-foreground placeholder:text-muted-foreground"
-                          placeholder="Ditt namn"
-                        />
-                      </div>
-
-                      <div>
-                        <Label htmlFor="email" className="text-sm font-semibold mb-2 block">
-                          E-post *
-                        </Label>
-                        <Input
-                          id="email"
-                          name="email"
-                          type="email"
-                          required
-                          value={formData.email}
-                          onChange={handleChange}
-                          className="bg-input border-border text-foreground placeholder:text-muted-foreground"
-                          placeholder="din@epost.se"
-                        />
-                      </div>
-
-                      <div>
-                        <Label htmlFor="phone" className="text-sm font-semibold mb-2 block">
-                          Telefon
-                        </Label>
-                        <Input
-                          id="phone"
-                          name="phone"
-                          type="tel"
-                          value={formData.phone}
-                          onChange={handleChange}
-                          className="bg-input border-border text-foreground placeholder:text-muted-foreground"
-                          placeholder="+46 123 456 789"
-                        />
-                      </div>
-
-                      <div>
-                        <Label htmlFor="message" className="text-sm font-semibold mb-2 block">
-                          Meddelande *
-                        </Label>
-                        <Textarea
-                          id="message"
-                          name="message"
-                          required
-                          value={formData.message}
-                          onChange={handleChange}
-                          rows={6}
-                          className="bg-input border-border text-foreground placeholder:text-muted-foreground resize-none"
-                          placeholder="Berätta om ditt projekt..."
-                        />
-                      </div>
-
-                      <Button
-                        type="submit"
-                        disabled={isSubmitting}
-                        className="w-full bg-primary text-primary-foreground hover:brightness-110 font-bold text-lg uppercase tracking-wide py-6 transition-all duration-200 active:scale-[0.98] disabled:opacity-50 disabled:cursor-not-allowed"
-                      >
-                        {isSubmitting ? 'Skickar...' : 'Skicka'}
-                      </Button>
-                    </form>
-                  </div>
-                </motion.div>
-
-                <motion.div
-                  initial={{ opacity: 0, x: 20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.6, delay: 0.3 }}
-                  className="space-y-6"
-                >
-                  <div className="bg-card rounded-2xl p-8 border border-border">
-                    <h2 className="text-2xl font-bold mb-6">Kontaktinformation</h2>
-                    <div className="space-y-6">
-                      {contactInfo.map((info, index) => (
-                        <div key={index} className="flex items-start gap-4">
-                          <div className="flex-shrink-0 w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center">
-                            <info.icon size={24} className="text-primary" />
-                          </div>
-                          <div>
-                            <p className="text-sm font-semibold text-muted-foreground mb-1">
-                              {info.title}
-                            </p>
-                            {info.link ? (
-                              <a
-                                href={info.link}
-                                className="text-base font-medium hover:text-primary transition-colors duration-200"
-                              >
-                                {info.content}
-                              </a>
-                            ) : (
-                              <p className="text-base font-medium">{info.content}</p>
-                            )}
-                          </div>
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-
-                  <div className="bg-gradient-to-br from-primary/10 to-primary/5 rounded-2xl p-8 border-2 border-primary/20">
-                    <h3 className="text-xl font-bold mb-4">Begär en kostnadsfri offert</h3>
-                    <p className="text-muted-foreground leading-relaxed mb-4">
-                      Vi erbjuder kostnadsfria offerter för alla typer av schakt- och jordarbeten. Kontakta oss idag så återkommer vi inom 24 timmar.
-                    </p>
-                    <div className="flex items-center gap-2 text-sm font-semibold text-primary">
-                      <Clock size={18} />
-                      <span>Svarstid: Inom 24 timmar</span>
-                    </div>
-                  </div>
-                </motion.div>
-              </div>
+              <dl className="space-y-6">
+                <div>
+                  <dt className="text-sm text-muted-foreground mb-1">Telefon</dt>
+                  <dd><a href={company.phoneHref} className="font-display text-3xl text-primary hover:underline">{company.phone}</a></dd>
+                </div>
+                <div>
+                  <dt className="text-sm text-muted-foreground mb-1">E-post</dt>
+                  <dd><a href={`mailto:${company.email}`} className="text-lg hover:text-primary break-all">{company.email}</a></dd>
+                </div>
+                <div>
+                  <dt className="text-sm text-muted-foreground mb-1">Adress</dt>
+                  <dd>
+                    <a href={company.mapsHref} target="_blank" rel="noreferrer" className="text-lg hover:text-primary">
+                      {company.street}<br />{company.city}
+                    </a>
+                  </dd>
+                </div>
+                <div>
+                  <dt className="text-sm text-muted-foreground mb-1">Öppettider</dt>
+                  <dd className="text-lg">{company.hours}</dd>
+                </div>
+              </dl>
             </div>
+
+            <form onSubmit={handleSubmit} className="space-y-5 md:border-l md:border-border md:pl-20">
+              <div className="grid gap-5 sm:grid-cols-2">
+                <div>
+                  <Label htmlFor="name" className="mb-2 block">Namn *</Label>
+                  <Input id="name" name="name" type="text" autoComplete="name" required value={formData.name} onChange={handleChange} className={fieldClass} />
+                </div>
+                <div>
+                  <Label htmlFor="phone" className="mb-2 block">Telefon</Label>
+                  <Input id="phone" name="phone" type="tel" autoComplete="tel" value={formData.phone} onChange={handleChange} className={fieldClass} />
+                </div>
+              </div>
+
+              <div>
+                <Label htmlFor="email" className="mb-2 block">E-post *</Label>
+                <Input id="email" name="email" type="email" autoComplete="email" required value={formData.email} onChange={handleChange} className={fieldClass} />
+              </div>
+
+              <div>
+                <Label htmlFor="message" className="mb-2 block">Meddelande *</Label>
+                <Textarea
+                  id="message"
+                  name="message"
+                  required
+                  value={formData.message}
+                  onChange={handleChange}
+                  rows={7}
+                  className="bg-transparent border-border rounded-sm text-base resize-y focus-visible:ring-primary"
+                  placeholder="Vad ska göras, var, och ungefär när?"
+                />
+              </div>
+
+              <Button
+                type="submit"
+                disabled={isSubmitting}
+                className="w-full sm:w-auto rounded-sm bg-primary text-primary-foreground hover:bg-primary/90 font-display text-xl font-semibold h-auto px-10 py-3 disabled:opacity-50"
+              >
+                {isSubmitting ? 'Skickar…' : 'Skicka meddelande'}
+              </Button>
+            </form>
           </section>
         </main>
 
